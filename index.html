@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SafeMarg: book flights, trains and buses with a verified Safety Score.">
+<title>SafeMarg — Book Smart, Travel Safe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/enhance.css">
+<link rel="stylesheet" href="css/extras.css">
+<link rel="stylesheet" href="css/upgrades.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 20C4 20 7 8 12 8C17 8 20 20 20 20" stroke="#0B1F3A" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="12" cy="4.5" r="2.5" fill="#E8763C"/>
+        <path d="M12 8V20" stroke="#2E6FF2" stroke-width="1.8" stroke-dasharray="1 3.4" stroke-linecap="round"/>
+      </svg>
+      SafeMarg
+    </div>
+    <div class="nav-right">
+      <span class="mono nav-credit" style="font-size:12px;color:var(--ink-soft);">Frontend Developer Intern Project · Ankit Kumar</span>
+      <button class="login-btn" id="loginBtn" onclick="openLogin()">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20C5.5 16 8.4 14.5 12 14.5C15.6 14.5 18.5 16 19.5 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span id="loginBtnLabel">Log in</span>
+      </button>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3V4M12 20V21M4 12H3M21 12H20M18.36 18.36L17.66 17.66M6.34 6.34L5.64 5.64M18.36 5.64L17.66 6.34M6.34 17.66L5.64 18.36" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="stepper">
+    <div class="wrap">
+      <div class="step active" data-step="search"><div class="circ">1</div>Search</div>
+      <div class="step-line"></div>
+      <div class="step" data-step="results"><div class="circ">2</div>Results</div>
+      <div class="step-line"></div>
+      <div class="step" data-step="seats"><div class="circ">3</div>Seats</div>
+      <div class="step-line"></div>
+      <div class="step" data-step="pay"><div class="circ">4</div>Payment</div>
+      <div class="step-line"></div>
+      <div class="step" data-step="confirm"><div class="circ">5</div>Confirmed</div>
+    </div>
+  </div>
+</header>
+
+<div class="view active" id="view-search">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Verified Safety Score · Flights, Trains &amp; Buses</div>
+      <h1>Book smart.<br>Travel <em>safe.</em></h1>
+      <p class="lead">One platform for flights, trains and buses — domestic and international — every result ranked by a live Safety Score before you book.</p>
+      <div class="trust-row">
+        <div class="trust-item"><span class="num">4.8M+</span><span class="lbl">safe journeys tracked</span></div>
+        <div class="trust-item"><span class="num">600+</span><span class="lbl">routes, all modes</span></div>
+        <div class="trust-item"><span class="num">40+</span><span class="lbl">countries covered</span></div>
+      </div>
+    </div>
+
+    <div class="pass">
+      <div class="pass-top">
+        <div>
+          <div class="tag">SafeMarg · search</div>
+          <div class="route" id="routeLabel">DEL <svg class="mode-icon" id="modeIconTop" viewBox="0 0 24 24" fill="none"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg> BOM</div>
+        </div>
+        <div class="tag" style="text-align:right">Passenger<br><span style="color:white">1 Adult</span></div>
+      </div>
+
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="flight" onclick="setMode('flight')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg><span>Flights</span>
+        </button>
+        <button class="mode-tab" data-mode="train" onclick="setMode('train')">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M5 13H19M8 20L6 22M16 20L18 22M8 8H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Trains</span>
+        </button>
+        <button class="mode-tab" data-mode="bus" onclick="setMode('bus')">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 12H21M7 17V19M17 17V19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="7.5" cy="14.3" r="0.8" fill="currentColor"/><circle cx="16.5" cy="14.3" r="0.8" fill="currentColor"/></svg><span>Buses</span>
+        </button>
+      </div>
+
+      <div class="pass-body">
+        <label class="intl-row" id="intlRow">
+          <input type="checkbox" id="intlCheck" onchange="toggleIntl()"> International routes
+        </label>
+        <div class="field-row">
+          <div class="field"><label>From</label><select id="fromCity"></select></div>
+          <div class="field"><label>To</label><select id="toCity"></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Depart</label><input type="date" id="departDate" value="2026-09-14"></div>
+          <div class="field"><label>Passengers</label>
+            <select id="paxCount"><option>1 Adult</option><option>2 Adults</option><option>3 Adults</option></select>
+          </div>
+        </div>
+        <button class="search-btn" id="searchBtn" onclick="doSearch()">Search safe trips</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap sm-features">
+    <h2>Why SafeMarg?</h2>
+    <div class="sm-feat-grid">
+      <div class="sm-feat"><span>🛡️</span><b>Safety Score</b><p>Every flight, train and bus is ranked by a safety score before you book.</p></div>
+      <div class="sm-feat"><span>🧭</span><b>All modes, one place</b><p>Flights, trains and buses, domestic and international, in one search.</p></div>
+      <div class="sm-feat"><span>🎫</span><b>Instant e-ticket</b><p>QR code, barcode, PDF download and WhatsApp share right after booking.</p></div>
+      <div class="sm-feat"><span>🔒</span><b>Card &amp; UPI payment</b><p>Validated card form and scan-and-pay UPI QR with the exact amount.</p></div>
+    </div>
+    <h2>Popular routes</h2>
+    <div class="sm-chips" id="smChips"></div>
+  </div>
+</div>
+
+<div class="view" id="view-results">
+  <div class="wrap">
+    <div class="back-link" onclick="goStep('search')">← Edit search</div>
+    <div class="results-head">
+      <h2 id="resultsTitle">Trips, Del → Bom</h2>
+      <span class="mono" style="font-size:12.5px;color:var(--ink-soft);">Sorted by Safety Score</span>
+    </div>
+    <div id="flightList"></div>
+    <p class="results-foot">Prices include our verified Safety Score check. Tap any traveller rating to read full reviews and trip details.</p>
+  </div>
+</div>
+
+<div class="view" id="view-seats">
+  <div class="wrap">
+    <div class="back-link" onclick="goStep('results')">← Back to results</div>
+    <div class="results-head"><h2 id="seatsHeading">Choose your seat</h2></div>
+    <div class="seat-layout">
+      <div class="plane-body">
+        <div class="cockpit"></div>
+        <div class="seat-grid" id="seatGrid"></div>
+        <div class="legend">
+          <span><i style="background:var(--paper);border:1.5px solid var(--line)"></i>Available</span>
+          <span><i style="background:var(--line)"></i>Taken</span>
+          <span><i style="background:var(--sky)"></i>Selected</span>
+          <span><i style="background:var(--paper);border:1.5px solid var(--amber)"></i>Premium (+₹500)</span>
+        </div>
+      </div>
+      <div class="summary-card">
+        <h3>Trip summary</h3>
+        <div class="sum-row"><span>Route</span><b id="sumRoute">DEL → BOM</b></div>
+        <div class="sum-row"><span>Fare</span><b id="sumFare">₹4,120</b></div>
+        <div class="sum-row"><span>Seat</span><b id="sumSeat">Not selected</b></div>
+        <div class="sum-row"><span>Seat charge</span><b id="sumSeatCharge">₹0</b></div>
+        <div class="sum-total"><span>Total</span><span id="sumTotal">₹4,120</span></div>
+        <button class="continue-btn" id="seatContinue" disabled onclick="goStep('pay')">Continue to payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="view" id="view-pay">
+  <div class="wrap">
+    <div class="back-link" onclick="goStep('seats')">← Back to seats</div>
+    <div class="results-head"><h2>Passenger &amp; payment details</h2></div>
+    <div class="offer-strip mono">🏷️ Use code <b>SAFE10</b> for 10% off, or <b>FLAT100</b> for ₹100 off — apply it in the order summary →</div>
+    <div class="pay-layout">
+      <div class="pay-card">
+        <h3>Passenger details</h3>
+        <div class="form-grid">
+          <div class="in"><label>Full name</label><input type="text" id="paxName" placeholder="Ankit Kumar"></div>
+          <div class="in"><label>Mobile number</label><input type="tel" id="paxPhone" placeholder="98xxxxxxxx"></div>
+        </div>
+        <div class="form-grid full"><div class="in"><label>Email</label><input type="email" id="paxEmail" placeholder="you@example.com"></div></div>
+
+        <h3 style="margin-top:28px;">Payment</h3>
+        <div class="pay-methods">
+          <button class="pay-tab active" id="tabCard" onclick="setPayMethod('card')">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 9.5H21.5" stroke="currentColor" stroke-width="1.6"/></svg> Card
+          </button>
+          <button class="pay-tab" id="tabUpi" onclick="setPayMethod('upi')">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.6"/><path d="M14 14H18M21 14V17M14 21H18M18 17.5V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Scan &amp; pay (UPI)
+          </button>
+        </div>
+
+        <div id="cardMethod">
+          <div class="card-visual">
+            <div class="crow"><span>SAFEMARG PAY</span><span>VISA</span></div>
+            <div class="cnum" id="cardPreview">•••• •••• •••• ••••</div>
+            <div class="crow"><span id="namePreview">CARDHOLDER NAME</span><span id="expPreview">MM/YY</span></div>
+          </div>
+          <div class="form-grid">
+            <div class="in" style="grid-column:1/3;"><label>Card number</label><input type="text" id="cardNum" maxlength="19" placeholder="4242 4242 4242 4242" oninput="formatCard(this)"></div>
+          </div>
+          <div class="form-grid">
+            <div class="in"><label>Expiry</label><input type="text" id="cardExp" maxlength="5" placeholder="MM/YY" oninput="formatExp(this)"></div>
+            <div class="in"><label>CVV</label><input type="password" id="cardCvv" maxlength="3" placeholder="123"></div>
+          </div>
+          <button class="pay-btn" id="payBtn" onclick="doPayment()">Pay &amp; confirm booking</button>
+        </div>
+
+        <div id="upiMethod" style="display:none">
+          <div class="qr-pay-box">
+            <div class="qr-box" id="upiQr"></div>
+            <p class="qr-hint mono">Scan with any UPI app<br>PhonePe · Google Pay · Paytm · BHIM</p>
+            <div class="or-divider"><span>or pay by UPI ID</span></div>
+            <div class="in"><label>UPI ID</label><input type="text" id="upiId" placeholder="yourname@upi"></div>
+            <button class="pay-btn" id="upiPayBtn" onclick="doPaymentUpi()">Pay via UPI</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <h3>Order summary</h3>
+        <div class="sum-row"><span>Route</span><b id="paySumRoute">DEL → BOM</b></div>
+        <div class="sum-row"><span>Seat</span><b id="paySumSeat">—</b></div>
+        <div class="sum-row"><span>Fare</span><b id="paySumFare">₹4,120</b></div>
+        <div class="sum-row"><span>Taxes &amp; fees</span><b>₹412</b></div>
+        <div class="sum-row discount-row" id="discountRow" style="display:none"><span>Discount</span><b id="paySumDiscount">-₹0</b></div>
+        <div class="promo-row">
+          <input type="text" id="promoInput" class="mono" placeholder="Promo code">
+          <button onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="promo-msg" id="promoMsg"></div>
+        <div class="sum-total"><span>Total</span><span id="paySumTotal">₹4,532</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="view" id="view-confirm">
+  <div class="wrap">
+    <div class="confirm-wrap">
+      <div class="check-circle">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 8" stroke="#1F9D6C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 style="font-size:28px;">Booking confirmed</h2>
+      <p style="color:var(--ink-soft);margin-top:10px;">Your e-ticket has been generated.<br><span id="smMailStatus" class="sm-mail">Sending booking details…</span></p>
+
+      <div class="eticket">
+        <div class="et-flex">
+          <div class="et-main">
+            <div class="et-top">
+              <div><div class="mono" style="font-size:11px;color:#AFC4EE;">PNR</div><div class="mono" style="font-size:17px;" id="pnrOut">SM8X2K9</div></div>
+              <div class="et-mode-badge"><span class="mono" id="etModeOut">FLIGHT</span></div>
+              <div style="text-align:right"><div class="mono" style="font-size:11px;color:#AFC4EE;">SAFETY SCORE</div><div class="mono" style="font-size:17px;color:#7CE0AE;" id="scoreOut">94</div></div>
+            </div>
+            <div class="et-body">
+              <div class="et-field"><div class="l">Passenger</div><div class="v" id="etName">—</div></div>
+              <div class="et-field"><div class="l">Route</div><div class="v" id="etRoute">DEL → BOM</div></div>
+              <div class="et-field"><div class="l">Seat</div><div class="v" id="etSeat">—</div></div>
+              <div class="et-field"><div class="l">Departs</div><div class="v" id="etDepart">—</div></div>
+            </div>
+            <div class="et-fare">
+              <div class="sum-row"><span>Fare</span><b id="etFare">₹0</b></div>
+              <div class="sum-row"><span>Seat charge</span><b id="etSeatCharge">₹0</b></div>
+              <div class="sum-row" id="etDiscountRow" style="display:none"><span>Discount</span><b id="etDiscountVal" style="color:var(--green)">-₹0</b></div>
+              <div class="sum-row"><span>Taxes &amp; fees</span><b>₹412</b></div>
+              <div class="sum-total"><span>Total paid</span><span id="etAmount">₹4,532</span></div>
+            </div>
+            <div class="track-mini">
+              <svg class="track-plane" viewBox="0 0 24 24" fill="none"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg>
+            </div>
+          </div>
+          <div class="et-stub">
+            <div class="stub-label mono">BOARDING</div>
+            <div class="et-field"><div class="l">Passenger</div><div class="v" id="etNameStub">—</div></div>
+            <div class="et-field"><div class="l">Route</div><div class="v" id="etRouteStub">—</div></div>
+            <div class="et-field"><div class="l">Seat</div><div class="v" id="etSeatStub">—</div></div>
+            <div class="qr-box" id="etQr"></div>
+            <div class="mono stub-pnr" id="etPnrStub">—</div>
+          </div>
+        </div>
+        <div class="barcode">
+          <div class="barcode-bars" id="etBarcode"></div>
+          <div class="barcode-num mono" id="etBarcodeNum">SM0000000000</div>
+        </div>
+      </div>
+
+      <button class="new-search" onclick="resetAll()">Book another trip</button>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 SafeMarg Travel Pvt. Ltd. · Project by Ankit Kumar, Frontend Developer Intern</footer>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="loginOverlay" onclick="if(event.target===this) closeLogin()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLogin()" aria-label="Close">&times;</button>
+    <h3>Log in to SafeMarg</h3>
+    <p class="modal-sub">Demo login for this project — no real account or OTP is sent.</p>
+    <div class="in" style="margin-bottom:14px;"><label>Full name</label><input type="text" id="loginName" placeholder="Ankit Kumar"></div>
+    <div class="in" style="margin-bottom:22px;"><label>Email or mobile</label><input type="text" id="loginContact" placeholder="you@example.com"></div>
+    <button class="search-btn" onclick="doLogin()">Continue</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="detailsOverlay" onclick="if(event.target===this) closeDetails()">
+  <div class="modal details-modal">
+    <button class="modal-close" onclick="closeDetails()" aria-label="Close">&times;</button>
+    <div id="detailsBody"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/enhance.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/config.js"></script>
+<script src="js/upgrades.js"></script>
+
+</body>
+</html>

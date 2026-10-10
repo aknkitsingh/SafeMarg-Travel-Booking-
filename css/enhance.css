@@ -1,0 +1,44 @@
+
+/* Small visual enhancements for SafeMarg */
+.trip-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(11,31,58,.09);transition:.2s}
+.seat:not(.taken):hover{border-color:var(--sky);transform:translateY(-1px)}
+.search-btn,.pay-btn,.continue-btn,.new-search,.select-trip{transition:transform .15s ease,filter .15s ease}
+.search-btn:active,.pay-btn:active,.continue-btn:active,.new-search:active,.select-trip:active{transform:translateY(1px)}
+.score::before{content:"✓";margin-right:4px}
+
+
+/* ---------- SafeMarg 2026 frontend upgrade ---------- */
+.sm-swap{
+  align-self:end; margin-bottom:2px; border:1px solid var(--line);
+  background:var(--paper); color:var(--ink); border-radius:10px;
+  padding:9px 12px; font-weight:700; white-space:nowrap;
+}
+.sm-swap:hover{border-color:var(--sky);color:var(--sky)}
+.sm-route-info{
+  display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px;
+}
+.sm-route-info span{
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);
+  border-radius:999px;padding:7px 11px;font-size:12px;font-weight:600;
+}
+body.dark .sm-swap, body.dark .sm-route-info span{
+  background:#101c2d;color:#edf3ff;border-color:#334761;
+}
+body.dark .eticket{
+  background:#0b1728;
+  color:#f4f8ff;
+  border:1px solid #29415f;
+}
+body.dark .et-stub{background:#112b4b;border-left-color:#7187a4}
+body.dark .et-field .l,body.dark .stub-label,
+body.dark .et-fare .sum-row span:first-child{color:#c7d8ef}
+body.dark .et-fare,body.dark .track-mini{border-color:#365475}
+body.dark .barcode{border-color:#7187a4}
+body.dark .barcode-bars{background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 5px)}
+body.dark input::placeholder,body.dark select{color:#aebed2}
+body.dark .field label,body.dark .in label{color:#c8d6e8}
+@media(max-width:600px){
+  .sm-swap{width:100%;margin-top:-5px}
+  .sm-route-info{gap:6px}
+  .sm-route-info span{font-size:11px}
+}
