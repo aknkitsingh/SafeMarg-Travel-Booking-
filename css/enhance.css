@@ -42,3 +42,69 @@ body.dark .field label,body.dark .in label{color:#c8d6e8}
   .sm-route-info{gap:6px}
   .sm-route-info span{font-size:11px}
 }
+
+/* Frontend-only interaction polish */
+:where(button,a,input,select):focus-visible{
+  outline:3px solid rgba(91,103,230,.48);
+  outline-offset:3px
+}
+.stepper .step-line{
+  position:relative;overflow:hidden;border-radius:999px;
+  background:#e3e7f0;transition:background .25s ease
+}
+.stepper .step-line::after{
+  content:"";position:absolute;inset:0 auto 0 0;width:0;
+  border-radius:inherit;background:linear-gradient(90deg,#f07842,#e85b83,#6259e6);
+  transition:width .42s cubic-bezier(.22,.68,0,1.12)
+}
+.step.done + .step-line::after{width:100%}
+.step.active + .step-line::after{width:48%}
+.step .circ{transition:transform .2s ease,box-shadow .2s ease}
+.step.active .circ{box-shadow:0 4px 13px rgba(75,91,221,.3);transform:scale(1.06)}
+.step.done .circ{box-shadow:0 3px 9px rgba(75,91,221,.16)}
+
+.view.active{animation:smViewEnter .34s cubic-bezier(.2,.7,.25,1) both}
+.view.active .results-head{animation:smContentEnter .38s .03s ease both}
+#flightList .trip-card{animation:smContentEnter .35s ease both}
+#flightList .trip-card:nth-child(2){animation-delay:.045s}
+#flightList .trip-card:nth-child(3){animation-delay:.09s}
+#flightList .trip-card:nth-child(4){animation-delay:.135s}
+#seatGrid .seat{animation:smSeatEnter .24s ease both}
+#seatGrid .seat:nth-of-type(4n+2){animation-delay:.035s}
+#seatGrid .seat:nth-of-type(4n+3){animation-delay:.07s}
+#seatGrid .seat:nth-of-type(4n+4){animation-delay:.105s}
+
+button:not(:disabled){-webkit-tap-highlight-color:transparent}
+button:disabled{cursor:not-allowed}
+.pay-tab,.mode-tab,.sm-chip,.sm-region-filter,.login-btn,.dark-toggle,.sm-btn{
+  transition:transform .18s ease,box-shadow .18s ease,color .18s ease,background-color .18s ease,border-color .18s ease
+}
+.pay-tab:active,.mode-tab:active,.sm-chip:active,.sm-region-filter:active,.login-btn:active,.dark-toggle:active,.sm-btn:active{
+  transform:scale(.98)
+}
+.pay-btn:disabled,.continue-btn:disabled{filter:saturate(.45);box-shadow:none}
+::selection{background:rgba(98,89,230,.2);color:inherit}
+
+body.dark :where(button,a,input,select):focus-visible{outline-color:rgba(158,169,255,.7)}
+body.dark .stepper .step-line{background:#28354a}
+
+@keyframes smViewEnter{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes smContentEnter{
+  from{opacity:0;transform:translateY(9px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes smSeatEnter{
+  from{opacity:.45;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .stepper .step-line,.stepper .step-line::after,.step .circ,
+  .view.active,.view.active .results-head,#flightList .trip-card,#seatGrid .seat,
+  .pay-tab,.mode-tab,.sm-chip,.sm-region-filter,.login-btn,.dark-toggle,.sm-btn{
+    animation:none!important;transition:none!important;transform:none!important
+  }
+}

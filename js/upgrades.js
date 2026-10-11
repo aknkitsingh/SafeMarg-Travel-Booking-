@@ -81,13 +81,12 @@
 /* ---------- Pro polish: live route, popular routes, filter, confetti, dark memory, demo autofill ---------- */
 (function () {
   var C = window.SM_CONFIG || {}, $ = function (id) { return document.getElementById(id); };
-  var SYM = { flight: "✈", train: "▣", bus: "▰" };
   function curMode() { var t = document.querySelector(".mode-tab.active"); return t ? t.dataset.mode : "flight"; }
 
   /* live route label on the search card */
   function updRoute() {
     var f = $("fromCity"), t = $("toCity"), l = $("routeLabel");
-    if (f && t && l && f.value && t.value) l.textContent = f.value + " " + SYM[curMode()] + " " + t.value;
+    if (f && t && l && f.value && t.value) window.updateRouteLabel(f.value, t.value, curMode());
   }
 
   /* popular routes */
@@ -156,13 +155,43 @@
     h.parentNode.insertBefore(b, h);
   }
 
+  function destinationFilters() {
+    var filters = document.querySelectorAll("[data-destination-filter]");
+    var cards = document.querySelectorAll("#smDestinations .sm-destination-card");
+    var count = $("smRegionCount");
+    if (!filters.length || !cards.length || !count) return;
+
+    Array.prototype.forEach.call(filters, function (button) {
+      var region = button.dataset.destinationFilter;
+      var total = Array.prototype.filter.call(cards, function (card) {
+        return region === "all" || card.dataset.region === region;
+      }).length;
+      var badge = button.querySelector("span");
+      if (badge) badge.textContent = total;
+      button.addEventListener("click", function () {
+        var visible = 0;
+        Array.prototype.forEach.call(filters, function (item) {
+          var active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+        Array.prototype.forEach.call(cards, function (card) {
+          card.hidden = region !== "all" && card.dataset.region !== region;
+          if (!card.hidden) visible++;
+        });
+        count.textContent = "Showing " + visible + " of " + cards.length + " places";
+      });
+    });
+    filters[0].click();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     /* dark mode remembered */
     var dt = $("darkToggle");
     try { if (localStorage.getItem("sm_dark") === "1") { document.body.classList.add("dark"); document.documentElement.style.colorScheme = "dark"; } } catch (e) {}
     if (dt) dt.addEventListener("click", function () { try { localStorage.setItem("sm_dark", document.body.classList.contains("dark") ? "1" : "0"); } catch (e) {} });
 
-    chips(); demoBtn();
+    chips(); demoBtn(); destinationFilters();
     ["fromCity", "toCity"].forEach(function (id) { var s = $(id); if (s) s.addEventListener("change", updRoute); });
     document.addEventListener("click", function (e) {
       if (e.target.closest && e.target.closest(".mode-tab,#intlRow,#swapCities")) setTimeout(updRoute, 150);

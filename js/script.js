@@ -64,18 +64,25 @@
     if(list.length>1) to.selectedIndex=1;
   }
 
+  window.updateRouteLabel=function(from,to,m){
+    const label=$("routeLabel"),icon=$("modeIconTop");
+    if(!label||!icon)return;
+    const modeIcons={
+      flight:'<path d="M2 16.5L22 12L2 7.5V11L14 12L2 13V16.5Z" fill="currentColor"/>',
+      train:'<rect x="5" y="2.75" width="14" height="15.5" rx="4" stroke="currentColor" stroke-width="2"/><path d="M5.5 12.5H18.5M8.25 7.5H15.75M8 21L10 18.25M16 21L14 18.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="15.25" r="1" fill="currentColor"/><circle cx="15.5" cy="15.25" r="1" fill="currentColor"/>',
+      bus:'<path d="M5 3.5H19C20.1 3.5 21 4.4 21 5.5V17H3V5.5C3 4.4 3.9 3.5 5 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3.5 12H20.5M6.5 7H17.5M7 17V20M17 17V20M6 20H8M16 20H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7.5" cy="14.5" r="1" fill="currentColor"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor"/>'
+    };
+    $("routeFrom").textContent=from||"DEL";
+    $("routeTo").textContent=to||"BOM";
+    icon.innerHTML=modeIcons[m]||modeIcons.flight;
+    icon.setAttribute("aria-label",m==="train"?"Train":m==="bus"?"Bus":"Flight");
+  };
+
   window.setMode=function(m){
     mode=m;
     document.querySelectorAll(".mode-tab").forEach(b=>b.classList.toggle("active",b.dataset.mode===m));
-    const icon=$("modeIconTop");
-    if(icon){
-      const p=m==="flight"
-        ? 'M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z'
-        : m==="train" ? 'M5 3h14v14H5z' : 'M3 5h18v12H3z';
-      icon.querySelector("path").setAttribute("d",p);
-    }
     fillCities();
-    if($("routeLabel")) $("routeLabel").innerHTML=(m==="flight"?"DEL ✈ BOM":m==="train"?"DEL ▣ BOM":"DEL ▰ BOM");
+    window.updateRouteLabel($("fromCity").value,$("toCity").value,m);
   };
 
   window.doSearch=function(){

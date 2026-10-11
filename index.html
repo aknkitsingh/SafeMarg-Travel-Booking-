@@ -67,7 +67,7 @@
       <div class="pass-top">
         <div>
           <div class="tag">SafeMarg · search</div>
-          <div class="route" id="routeLabel">DEL <svg class="mode-icon" id="modeIconTop" viewBox="0 0 24 24" fill="none"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg> BOM</div>
+          <div class="route" id="routeLabel"><span id="routeFrom">DEL</span> <svg class="mode-icon" id="modeIconTop" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg> <span id="routeTo">BOM</span></div>
         </div>
         <div class="tag" style="text-align:right">Passenger<br><span style="color:white">1 Adult</span></div>
       </div>
@@ -77,10 +77,10 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13V16.5Z" fill="currentColor"/></svg><span>Flights</span>
         </button>
         <button class="mode-tab" data-mode="train" onclick="setMode('train')">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M5 13H19M8 20L6 22M16 20L18 22M8 8H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Trains</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="2.75" width="14" height="15.5" rx="4" stroke="currentColor" stroke-width="2"/><path d="M5.5 12.5H18.5M8.25 7.5H15.75M8 21L10 18.25M16 21L14 18.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="15.25" r="1" fill="currentColor"/><circle cx="15.5" cy="15.25" r="1" fill="currentColor"/></svg><span>Trains</span>
         </button>
         <button class="mode-tab" data-mode="bus" onclick="setMode('bus')">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 12H21M7 17V19M17 17V19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="7.5" cy="14.3" r="0.8" fill="currentColor"/><circle cx="16.5" cy="14.3" r="0.8" fill="currentColor"/></svg><span>Buses</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3.5H19C20.1 3.5 21 4.4 21 5.5V17H3V5.5C3 4.4 3.9 3.5 5 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3.5 12H20.5M6.5 7H17.5M7 17V20M17 17V20M6 20H8M16 20H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7.5" cy="14.5" r="1" fill="currentColor"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor"/></svg><span>Buses</span>
         </button>
       </div>
 
@@ -112,6 +112,80 @@
     </div>
     <h2>Popular routes</h2>
     <div class="sm-chips" id="smChips"></div>
+    <section class="sm-featured-banner" aria-label="Discover India with SafeMarg">
+      <img class="sm-featured-image" src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" alt="A tropical Indian coastline at golden hour" loading="lazy">
+      <div class="sm-featured-content">
+        <span class="sm-featured-kicker"><span></span> Your next chapter starts here</span>
+        <h2>India is calling.<br>Take the scenic route.</h2>
+        <p>Find your kind of getaway, then get there with a little more peace of mind.</p>
+        <a class="sm-featured-link" href="#smDestinations">Find your next destination <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="sm-featured-ticket" aria-hidden="true">
+        <div class="sm-featured-ticket-top"><span>THE JOURNEY</span><span>01 — ∞</span></div>
+        <div class="sm-featured-route"><span>DEL</span><i></i><span>IN</span></div>
+        <div class="sm-featured-caption">One country. A thousand ways to wander.</div>
+        <div class="sm-featured-modes">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16.5L22 12L2 7.5V11L14 12L2 13V16.5Z" fill="currentColor"/></svg>Flights</span>
+          <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="2.75" width="14" height="15.5" rx="4" stroke="currentColor" stroke-width="2"/><path d="M5.5 12.5H18.5M8.25 7.5H15.75M8 21L10 18.25M16 21L14 18.25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="8.5" cy="15.25" r="1" fill="currentColor"/><circle cx="15.5" cy="15.25" r="1" fill="currentColor"/></svg>Trains</span>
+          <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3.5H19C20.1 3.5 21 4.4 21 5.5V17H3V5.5C3 4.4 3.9 3.5 5 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3.5 12H20.5M6.5 7H17.5M7 17V20M17 17V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7.5" cy="14.5" r="1" fill="currentColor"/><circle cx="16.5" cy="14.5" r="1" fill="currentColor"/></svg>Buses</span>
+        </div>
+      </div>
+    </section>
+    <section class="sm-explore" aria-labelledby="smExploreTitle">
+      <div class="sm-explore-heading">
+        <div>
+          <p class="sm-explore-kicker">Find a place that feels like yours</p>
+          <h2 id="smExploreTitle">Explore beautiful India</h2>
+          <p>From the mountains in the north to tropical shores down south, find inspiration for your next trip.</p>
+        </div>
+        <span class="sm-explore-stamp">8 places to discover</span>
+      </div>
+      <div class="sm-region-toolbar">
+        <div class="sm-region-filters" role="group" aria-label="Filter destinations by region">
+          <button class="sm-region-filter active" type="button" data-destination-filter="all" aria-pressed="true" aria-controls="smDestinations">All India <span></span></button>
+          <button class="sm-region-filter" type="button" data-destination-filter="north" aria-pressed="false" aria-controls="smDestinations">North <span></span></button>
+          <button class="sm-region-filter" type="button" data-destination-filter="west" aria-pressed="false" aria-controls="smDestinations">West <span></span></button>
+          <button class="sm-region-filter" type="button" data-destination-filter="south" aria-pressed="false" aria-controls="smDestinations">South <span></span></button>
+          <button class="sm-region-filter" type="button" data-destination-filter="northeast" aria-pressed="false" aria-controls="smDestinations">North East <span></span></button>
+          <button class="sm-region-filter" type="button" data-destination-filter="islands" aria-pressed="false" aria-controls="smDestinations">Islands <span></span></button>
+        </div>
+        <span class="sm-region-count" id="smRegionCount" aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <div class="sm-destination-grid" id="smDestinations">
+        <a class="sm-destination-card" data-region="north" href="https://www.google.com/maps/search/?api=1&amp;query=Taj+Mahal+Agra" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="The Taj Mahal in Agra at sunset" loading="lazy"><span>North India</span></div>
+          <div class="sm-destination-copy"><h3>Taj Mahal</h3><p>Agra · Marble wonder</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="north" href="https://www.google.com/maps/search/?api=1&amp;query=Srinagar+Kashmir" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A calm mountain lake in Kashmir" loading="lazy"><span>North India</span></div>
+          <div class="sm-destination-copy"><h3>Srinagar</h3><p>Kashmir · Lakes &amp; mountains</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="west" href="https://www.google.com/maps/search/?api=1&amp;query=Hawa+Mahal+Jaipur" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Hawa Mahal palace in Jaipur" loading="lazy"><span>West India</span></div>
+          <div class="sm-destination-copy"><h3>Jaipur</h3><p>Rajasthan · The Pink City</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="west" href="https://www.google.com/maps/search/?api=1&amp;query=Goa+India" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Palm trees and beach in Goa" loading="lazy"><span>West Coast</span></div>
+          <div class="sm-destination-copy"><h3>Goa</h3><p>Goa · Sun, sand &amp; sea</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="south" href="https://www.google.com/maps/search/?api=1&amp;query=Kerala+backwaters" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A houseboat on the Kerala backwaters" loading="lazy"><span>South India</span></div>
+          <div class="sm-destination-copy"><h3>Kerala</h3><p>Kerala · Backwater escapes</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="north" href="https://www.google.com/maps/search/?api=1&amp;query=Ladakh+India" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Starry Himalayan mountains in Ladakh" loading="lazy"><span>North India</span></div>
+          <div class="sm-destination-copy"><h3>Ladakh</h3><p>Ladakh · Himalayan adventures</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="northeast" href="https://www.google.com/maps/search/?api=1&amp;query=Meghalaya+India" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A green forest landscape in northeast India" loading="lazy"><span>North East India</span></div>
+          <div class="sm-destination-copy"><h3>Meghalaya</h3><p>Meghalaya · Hills &amp; waterfalls</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+        <a class="sm-destination-card" data-region="islands" href="https://www.google.com/maps/search/?api=1&amp;query=Andaman+and+Nicobar+Islands" target="_blank" rel="noopener noreferrer">
+          <div class="sm-destination-photo"><img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Turquoise tropical sea and a sandy beach" loading="lazy"><span>Island India</span></div>
+          <div class="sm-destination-copy"><h3>Andaman Islands</h3><p>Andaman · Turquoise waters</p><span>Explore destination <b aria-hidden="true">↗</b></span></div>
+        </a>
+      </div>
+    </section>
   </div>
 </div>
 
